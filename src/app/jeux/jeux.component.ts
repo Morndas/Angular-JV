@@ -14,6 +14,8 @@ export class JeuxComponent implements OnInit {
   @Input() developer: string;
   @Input() editor: string;
   @Input() release_date: string;
+  @Input() id: string;
+  @Input() cover: string;
 
   constructor() { }
 

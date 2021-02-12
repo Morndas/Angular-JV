@@ -1,10 +1,12 @@
 <li class="list-group-item">
-  <h3>Nom: {{ name }}</h3>
-  <!--img class="affiche" [src]="filmAffiche"-->
+  <h3>{{ name }}</h3>
+  <img [src]="cover" width="150px" alt="cover">
   <ul>
     <li>Genre: {{ genre }}</li>
     <li>Développeur: {{ developer }}</li>
-    <li>Editeur: {{ editor }}</li>
+    <li>Éditeur: {{ editor }}</li>
     <li>Date de sortie: {{ release_date }}</li>
   </ul>
+  <a [routerLink]="['/modif', id]" class="btn btn-warning">Modifier</a>
+  <button class="btn btn-danger">Supprimer</button>
 </li>

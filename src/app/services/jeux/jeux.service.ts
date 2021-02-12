@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
-import {AngularFirestore} from 'angularfire2/firestore';
-import {map} from 'rxjs/operators';
+import { AngularFirestore } from 'angularfire2/firestore';
+import { map } from 'rxjs/operators';
+import {Subject} from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +14,12 @@ export class JeuxService {
     this.getAllJeux();
   }
 
-  jeux = [];
+  private jeux = [];
+  jeuSubject = new Subject<any>();
+
+  emitJeuSubject() {
+    this.jeuSubject.next(this.jeux.slice());
+  }
 
   getAllJeux() {
     return this.db.collection('jeux').snapshotChanges().pipe(
@@ -22,13 +28,21 @@ export class JeuxService {
           return {
             id: doc.payload.doc.id,
             data: doc.payload.doc.data()
-          }
+          };
         });
       })
     ).subscribe(res => {
       this.jeux = res;
-      // this.emitJeuSubject
+      this.emitJeuSubject();
     });
+  }
+
+  getJeuById(id: number) {
+    for (const jeu of this.jeux) {
+      if (jeu.id === id) {
+        return jeu;
+      }
+    }
   }
 
 }

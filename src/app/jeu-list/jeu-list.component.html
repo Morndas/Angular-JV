@@ -1,3 +1,11 @@
-<p>
-  jeu-list works!
-</p>
+<br>
+<ul class="list-group">
+  <app-jeux *ngFor="let jeu of jeux; let i = index"
+            [name]="jeu.data.name"
+            [cover]="jeu.data.cover"
+            [genre]="jeu.data.genre"
+            [developer]="jeu.data.developer"
+            [editor]="jeu.data.editor"
+            [release_date]="jeu.data.release_date"
+            [id]="jeu.id"></app-jeux>
+</ul>

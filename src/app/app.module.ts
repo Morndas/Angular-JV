@@ -26,6 +26,10 @@ const appRoutes: Routes = [
     component: JeuNewComponent
   },
   {
+    path: 'modif/:id',
+    component: JeuModifComponent
+  },
+  {
     path: '',
     component: HomeComponent
   }
