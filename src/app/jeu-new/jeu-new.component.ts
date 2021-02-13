@@ -14,9 +14,10 @@ export class JeuNewComponent implements OnInit {
     developer: null,
     editor: null,
     release_date: null,
-    id: null,
     cover: null
   };
+
+  create: any;
 
   constructor(
     private Jeu: JeuxService
@@ -33,9 +34,12 @@ export class JeuNewComponent implements OnInit {
         developer: null,
         editor: null,
         release_date: null,
-        id: null,
         cover: null
       };
+      this.create = true;
+      setTimeout(() => {
+        this.create = false;
+      }, 3000);
     });
   }
 
