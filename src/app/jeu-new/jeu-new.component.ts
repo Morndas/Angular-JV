@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {JeuxService} from '../services/jeux/jeux.service';
 
 @Component({
   selector: 'app-jeu-new',
@@ -7,9 +8,35 @@ import { Component, OnInit } from '@angular/core';
 })
 export class JeuNewComponent implements OnInit {
 
-  constructor() { }
+  public jeu: any = {
+    name: null,
+    genre: null,
+    developer: null,
+    editor: null,
+    release_date: null,
+    id: null,
+    cover: null
+  };
+
+  constructor(
+    private Jeu: JeuxService
+  ) { }
 
   ngOnInit() {
+  }
+
+  add() {
+    this.Jeu.saveNewJeu(this.jeu).subscribe(() => {
+      this.jeu = {
+        name: null,
+        genre: null,
+        developer: null,
+        editor: null,
+        release_date: null,
+        id: null,
+        cover: null
+      };
+    });
   }
 
 }

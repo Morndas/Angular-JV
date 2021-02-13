@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from 'angularfire2/firestore';
 import { map } from 'rxjs/operators';
-import {Subject} from 'rxjs';
+import {Observable, Subject} from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -43,6 +43,22 @@ export class JeuxService {
         return jeu;
       }
     }
+  }
+
+  saveNewJeu(jeu: any) {
+    return new Observable(obs => {
+      this.db.collection('jeux').add(jeu).then(() => {
+        console.log('success');
+        obs.next();
+      });
+    });
+  }
+
+  update(jeu: any, id: any) {
+    return new Observable(obs => {
+      this.db.doc(`jeux/${id}`).update(jeu);
+      obs.next();
+    });
   }
 
 }

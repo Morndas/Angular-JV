@@ -1,3 +1,66 @@
-<p>
-  jeu-modif works!
-</p>
+<br>
+<div class="row">
+  <div class="col-12 col-sm-6">
+    <div class="form-group">
+      <label>Nom: </label>
+      <br>
+      <input type="text" class="form-control" [(ngModel)]="jeu.name" value="{{jeu.name}}">
+    </div>
+  </div>
+  <div class="col-12 col-sm-6">
+    <div class="form-group">
+      <label>Genre: </label>
+      <br>
+      <input type="text" class="form-control" [(ngModel)]="jeu.genre">
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-12 col-sm-6">
+    <div class="form-group">
+      <label>Développeur: </label>
+      <br>
+      <input type="text" class="form-control" [(ngModel)]="jeu.developer">
+    </div>
+  </div>
+  <div class="col-12 col-sm-6">
+    <div class="form-group">
+      <label>Éditeur: </label>
+      <br>
+      <input type="text" class="form-control" [(ngModel)]="jeu.editor">
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-12 col-sm-6">
+    <div class="form-group">
+      <label>Date de sortie: </label>
+      <br>
+      <input type="text" class="form-control" [(ngModel)]="jeu.release_date">
+    </div>
+  </div>
+  <div class="col-12 col-sm-6">
+    <div class="form-group">
+      <label>URL vers une couverture: </label>
+      <br>
+      <input type="text" class="form-control" [(ngModel)]="jeu.cover">
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-12">
+    <div class="submit">
+      <button class="btn btn-outline-success" (click)="modif()">
+        Confirmer les modifications
+      </button>
+    </div>
+  </div>
+</div>
+
+<div class="row change" *ngIf="change">
+  <div class="col-12">
+    Les changements ont bien été enregistrés
+  </div>
+</div>

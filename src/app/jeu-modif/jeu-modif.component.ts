@@ -10,6 +10,8 @@ import { JeuxService } from '../services/jeux/jeux.service';
 export class JeuModifComponent implements OnInit {
 
   jeu: any;
+  id: any;
+  change: any;
 
   constructor(
     private Jeu: JeuxService,
@@ -18,7 +20,17 @@ export class JeuModifComponent implements OnInit {
 
   ngOnInit() {
     const id = this.route.snapshot.params['id'];
-    this.jeu = this.jeu.getJeuById(id);
+    this.id = this.Jeu.getJeuById(id).id;
+    this.jeu = this.Jeu.getJeuById(id).data;
+  }
+
+  modif() {
+    this.Jeu.update(this.jeu, this.id).subscribe(() => {
+      this.change = true;
+      setTimeout(() => {
+        this.change = false;
+      }, 3000);
+    });
   }
 
 }
