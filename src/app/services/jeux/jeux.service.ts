@@ -61,4 +61,8 @@ export class JeuxService {
     });
   }
 
+  delete(id: any) {
+    this.db.doc(`jeux/${id}`).delete();
+  }
+
 }

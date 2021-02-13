@@ -1,6 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import { AngularFirestore } from 'angularfire2/firestore';
-import {map} from 'rxjs/operators';
+import {JeuxService} from '../services/jeux/jeux.service';
 
 @Component({
   selector: 'app-jeux',
@@ -14,12 +13,18 @@ export class JeuxComponent implements OnInit {
   @Input() developer: string;
   @Input() editor: string;
   @Input() release_date: string;
-  @Input() id: string;
   @Input() cover: string;
+  @Input() id: string;
 
-  constructor() { }
+  constructor(
+    private Jeu: JeuxService
+  ) { }
 
   ngOnInit() {
+  }
+
+  supr() {
+    this.Jeu.delete(this.id);
   }
 
 }
