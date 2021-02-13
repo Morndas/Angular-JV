@@ -3,8 +3,6 @@ import { NgModule } from '@angular/core';
 
 import { environment } from '../environments/environment';
 import { AppComponent } from './app.component';
-import { TestComponent } from './test/test.component';
-import { FilmComponent } from './film/film.component';
 import { FormsModule } from '@angular/forms';
 import { JeuxComponent } from './jeux/jeux.component';
 import { AngularFireModule } from 'angularfire2';
@@ -38,8 +36,6 @@ const appRoutes: Routes = [
 @NgModule({
   declarations: [
     AppComponent,
-    TestComponent,
-    FilmComponent,
     JeuxComponent,
     HomeComponent,
     JeuListComponent,
